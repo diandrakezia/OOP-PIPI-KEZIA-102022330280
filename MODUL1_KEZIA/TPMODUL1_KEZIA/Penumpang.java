@@ -1,4 +1,4 @@
-package MODUL1_KEZIA.TPMODUL1_KEZIA;
+
 public class Penumpang {
     private String NIK;
     private String namaDepan;

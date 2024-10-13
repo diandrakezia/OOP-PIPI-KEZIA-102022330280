@@ -1,5 +1,3 @@
-package MODUL1_KEZIA.TPMODUL1_KEZIA;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +22,7 @@ public class Pembelian {
             System.out.println("4. Exit");
             System.out.print("Silahkan pilih menu: ");
             pilihanMenu = scanner.nextInt();
+            scanner.nextLine(); // Membersihkan input buffer
 
             switch (pilihanMenu) {
                 case 1:
@@ -41,12 +40,18 @@ public class Pembelian {
                     // Memasukkan data penumpang dan memilih penerbangan
                     if (penumpang == null) {
                         System.out.println("Silakan isi data diri anda terlebih dahulu!");
-                        String NIK = "102022330280"; // NIK Diandra Kezia
-                        String namaDepan = "Diandra"; // Nama Depan
-                        String namaBelakang = "Kezia"; // Nama Belakang
+                        System.out.print("Masukkan NIK: ");
+                        String NIK = scanner.nextLine();  // Input NIK dari pengguna
+                        
+                        System.out.print("Masukkan Nama Depan: ");
+                        String namaDepan = scanner.nextLine();  // Input Nama Depan dari pengguna
+                        
+                        System.out.print("Masukkan Nama Belakang: ");
+                        String namaBelakang = scanner.nextLine();  // Input Nama Belakang dari pengguna
 
                         penumpang = new Penumpang(NIK, namaDepan, namaBelakang);
 
+                        // Menampilkan daftar penerbangan untuk dipilih
                         System.out.println("\nSilakan Pilih Tiket Penerbangan Yang Tersedia");
                         for (int i = 0; i < daftarPenerbangan.size(); i++) {
                             System.out.println((i + 1) + ". " + daftarPenerbangan.get(i).getNomorPenerbangan() + 
@@ -55,9 +60,15 @@ public class Pembelian {
                         }
                         System.out.print("Masukkan nomor penerbangan: ");
                         int pilihanPenerbangan = scanner.nextInt();
-                        penerbanganDipilih = daftarPenerbangan.get(pilihanPenerbangan - 1);
+                        scanner.nextLine(); // Membersihkan input buffer
 
-                        System.out.println("Pembelian Tiket Berhasil Dilakukan. Cek Pesanan Tiket pada Menu (3).\n");
+                        // Validasi pemilihan penerbangan
+                        if (pilihanPenerbangan < 1 || pilihanPenerbangan > daftarPenerbangan.size()) {
+                            System.out.println("Pilihan tidak valid! Silakan pilih penerbangan yang benar.");
+                        } else {
+                            penerbanganDipilih = daftarPenerbangan.get(pilihanPenerbangan - 1);
+                            System.out.println("Pembelian Tiket Berhasil Dilakukan. Cek Pesanan Tiket pada Menu (3).\n");
+                        }
                     } else {
                         System.out.println("Anda sudah membeli tiket!\n");
                     }

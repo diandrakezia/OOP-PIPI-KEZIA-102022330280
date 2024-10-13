@@ -1,4 +1,3 @@
-package MODUL1_KEZIA.TPMODUL1_KEZIA;
 
 public class Penerbangan {
     private String nomorPenerbangan;
